@@ -1,0 +1,50 @@
+<nb-card status="primary">
+  <nb-card-header>
+    <nb-icon icon="address-book" pack="fa"></nb-icon> <span class="ml-2">Contact List </span>
+    <button nbButton status="warning" size="small" class="float-right">
+      <nb-icon class="mt-1" icon="plus-circle" pack="fa"></nb-icon> Contact
+    </button>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-12">
+        <p class="note-text text-warning">Status:- Active contact display in <span class="text-success">green</span> and
+          Inactive Contact display in <span class="text-danger">red</span>.</p>
+      </div>
+    </div>
+    <div class="table-responsive mt-2">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">profile pic</th>
+            <th scope="col">first name</th>
+            <th scope="col">last name</th>
+            <th scope="col">email</th>
+            <th scope="col">phone number</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let contact of contacts">
+            <tr
+              [ngClass]="{'text-danger': (contact.status === contactStatusEnum.Inactive), 'text-success' : (contact.status === contactStatusEnum.Active)}">
+              <td scope="row">{{contact.id}}</td>
+              <td> <img [src]="contact.profilePic" class="profile-pic" alt="profile pic" /></td>
+              <td>{{contact.firstName}}</td>
+              <td>{{contact.lastName}}</td>
+              <td>{{contact.email}}</td>
+              <td>{{contact.phoneNumber}}</td>
+              <td>
+                <nb-icon class="ml-2 text-success pointer" nbTooltip="edit" nbTooltipPlacement="top"
+                  nbTooltipStatus="success" icon="edit" pack="fa"></nb-icon>
+                <nb-icon class="ml-3 text-dange pointer" nbTooltip="delete" nbTooltipPlacement="top"
+                  nbTooltipStatus="danger" icon="trash" pack="fa"></nb-icon>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </nb-card-body>
+</nb-card>

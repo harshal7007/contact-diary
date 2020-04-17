@@ -31,3 +31,13 @@
 
   @include nb-overrides();
 };
+
+table {
+  font-family: Open Sans, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.pointer {
+  cursor: pointer;
+}

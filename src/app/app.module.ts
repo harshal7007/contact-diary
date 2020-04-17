@@ -19,6 +19,9 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { SharedModule } from './shared/shared.module';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataBaseService } from './in-memory-database/in-memory-database.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +38,12 @@ import {
     NbToastrModule.forRoot(),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    SharedModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataBaseService,
+      { dataEncapsulation: false },
+    ),
   ],
   bootstrap: [AppComponent],
 })

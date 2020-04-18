@@ -19,6 +19,7 @@ import {
 import { SharedModule } from './shared/shared.module';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataBaseService } from './in-memory-database/in-memory-database.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,6 +41,12 @@ import { InMemoryDataBaseService } from './in-memory-database/in-memory-database
     ),
   ],
   bootstrap: [AppComponent],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+    },
+  ],
 })
 export class AppModule {
 }

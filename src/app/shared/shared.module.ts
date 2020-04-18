@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbCardModule, NbButtonModule, NbIconModule, NbTooltipModule, NbSpinnerModule } from '@nebular/theme';
+import {
+  NbCardModule, NbButtonModule, NbIconModule, NbTooltipModule, NbSpinnerModule,
+  NbRadioModule, NbInputModule,
+} from '@nebular/theme';
 import { LoaderComponent } from './component/loader/loader.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,6 +17,10 @@ import { LoaderComponent } from './component/loader/loader.component';
     NbIconModule,
     NbTooltipModule,
     NbSpinnerModule,
+    NbRadioModule,
+    NbInputModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     CommonModule,
@@ -22,6 +30,10 @@ import { LoaderComponent } from './component/loader/loader.component';
     NbTooltipModule,
     NbSpinnerModule,
     LoaderComponent,
+    NbRadioModule,
+    NbInputModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule { }

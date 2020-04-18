@@ -23,3 +23,7 @@ export const toasterTypes: NbComponentStatus[] = [
   'warning',
   'danger',
 ];
+
+export const emailPattern = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+
+export const phonePattern = /^(1-)?\d{3}-\d{3}-\d{4}$/;

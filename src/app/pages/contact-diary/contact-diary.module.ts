@@ -21,6 +21,11 @@ const routes: Routes = [
           .then(m => m.ManageContactModule),
       },
       {
+        path: 'manage-contact/:id',
+        loadChildren: () => import('./manage-contact/manage-contact.module')
+          .then(m => m.ManageContactModule),
+      },
+      {
         path: '',
         redirectTo: 'contact-listing',
         pathMatch: 'full',

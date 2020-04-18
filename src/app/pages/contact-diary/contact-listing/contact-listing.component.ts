@@ -4,6 +4,7 @@ import { ContactDiary } from '../../../models/contact-diary.model';
 import { ContactStatusEnum, toasterTypes } from '../../../config';
 import Swal from 'sweetalert2';
 import { ToasterService } from '../../../common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-contact-listing',
@@ -21,6 +22,7 @@ export class ContactListingComponent implements OnInit {
   constructor(
     private _contactListingService: ContactListingService,
     private toasterService: ToasterService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +36,11 @@ export class ContactListingComponent implements OnInit {
       // use set timeout beacuase give server effect.
       setTimeout(() => {
         this.contacts = res;
+        // to fix issue for loader falgs
+        this.contacts.forEach((contact: ContactDiary) => {
+          contact.switchLoaderFlag = false;
+          contact.deleteLoderFlag = false;
+        });
         this.contactListingLoadingFlag = false;
       }, 1000);
     }, err => {
@@ -54,12 +61,12 @@ export class ContactListingComponent implements OnInit {
         this.genericLoaderFlag = false;
         this.contacts[index].switchLoaderFlag = false;
         this.contacts[index].status = updateContact.status;
-        this.toasterService.showToast(this.toasterTypes[1], 'contact status updated successfully.', '');
+        this.toasterService.showToast(this.toasterTypes[1], 'status updated successfully.', '');
       }, 1000);
     }, err => {
       this.genericLoaderFlag = false;
       this.contacts[index].switchLoaderFlag = false;
-      this.toasterService.showToast(this.toasterTypes[4], 'problem while updating contact status', '');
+      this.toasterService.showToast(this.toasterTypes[4], 'problem while updating status', '');
     });
   }
 
@@ -96,6 +103,12 @@ export class ContactListingComponent implements OnInit {
         this.deleteContact(id, index);
       }
     });
+  }
+
+  goToManageContact(id: number = -1): void {
+    this.router.navigate([((id !== -1) ?
+      `pages/contact-diary/manage-contact/${this._contactListingService.base64Encryption(id.toString())}` :
+    'pages/contact-diary/manage-contact')]);
   }
 
 }

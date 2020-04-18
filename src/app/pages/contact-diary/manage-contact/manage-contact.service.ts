@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators/catchError';
 import { tap } from 'rxjs/operators/tap';
 
 @Injectable()
-export class ContactListingService {
+export class ManageContactService {
 
   private contactsUrl = 'api/contacts';
   httpOptions = {
@@ -18,29 +18,14 @@ export class ContactListingService {
     private http: HttpClient,
   ) { }
 
-  /** GET contacts from the server */
-  getContacts(): Observable<ContactDiary[]> {
-    return this.http.get<ContactDiary[]>(this.contactsUrl).pipe(
-      // tslint:disable-next-line:no-console
-      tap(_ => console.log('fetched contacts')),
-      catchError(this.handleError<ContactDiary[]>('getContacts', [])),
-    );
-  }
-
-  /** DELETE: delete the contact from the server */
-  deleteContact(hero: ContactDiary | number): Observable<ContactDiary> {
-    const id = typeof hero === 'number' ? hero : hero.id;
+  /** GET contact by id. Will 404 if id not found */
+  getContact(id: number): Observable<ContactDiary> {
     const url = `${this.contactsUrl}/${id}`;
-
-    return this.http.delete<ContactDiary>(url, this.httpOptions).pipe(
+    return this.http.get<ContactDiary>(url).pipe(
       // tslint:disable-next-line:no-console
-      tap(_ => console.log(`deleted contact id=${id}`)),
-      catchError(this.handleError<ContactDiary>('deleteContact')),
+      tap(_ => console.log(`fetched conatact id=${id}`)),
+      catchError(this.handleError<ContactDiary>(`getContact id=${id}`)),
     );
-  }
-
-  base64Encryption(msg: string): string {
-    return btoa(msg);
   }
 
   /** PUT: update the contact on the server */
@@ -50,6 +35,19 @@ export class ContactListingService {
       tap(_ => console.log(`updated contact id=${contact.id}`)),
       catchError(this.handleError<any>('updateContact')),
     );
+  }
+
+  /** POST: add a new hero to the server */
+  addContact(contact: ContactDiary): Observable<ContactDiary> {
+    return this.http.post<ContactDiary>(this.contactsUrl, contact, this.httpOptions).pipe(
+      // tslint:disable-next-line:no-console
+      tap((newHero: ContactDiary) => console.log(`added contact w/ id=${newHero.id}`)),
+      catchError(this.handleError<ContactDiary>('addHero')),
+    );
+  }
+
+  base64Decryption(msg: string): string {
+    return atob(msg);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

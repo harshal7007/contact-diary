@@ -1,14 +1,15 @@
-<nb-card status="success">
+<nb-card status="info">
   <nb-card-header>
     <nb-icon icon="address-book" pack="fa"></nb-icon> <span class="ml-2">Contact List </span>
-    <button nbButton status="warning" size="small" class="float-right" [disabled]="genericLoaderFlag">
+    <button nbButton status="success" size="small" class="float-right" [disabled]="genericLoaderFlag"
+      (click)="goToManageContact()">
       <nb-icon class="mt-1" icon="plus-circle" pack="fa"></nb-icon> Contact
     </button>
   </nb-card-header>
   <nb-card-body>
     <div class="row">
       <div class="col-12">
-        <p class="note-text text-warning">Status:- Active contact display in <span class="text-success">green</span> and
+        <p class="note-text text-info">Status:- Active contact display in <span class="text-success">green</span> and
           Inactive Contact display in <span class="text-danger">red</span>.</p>
       </div>
     </div>
@@ -41,7 +42,7 @@
               <td>{{contact.email}}</td>
               <td>{{contact.phoneNumber}}</td>
               <td>
-                <nb-icon class="ml-3 text-success pointer icon-size" [ngClass]="{'disabled-content': genericLoaderFlag}"
+                <nb-icon class="ml-3 text-success pointer icon-size" (click)="goToManageContact(contact.id)" [ngClass]="{'disabled-content': genericLoaderFlag}"
                   nbTooltip="edit" nbTooltipPlacement="top" nbTooltipStatus="success" icon="edit" pack="fa"></nb-icon>
                 <nb-icon *ngIf="!contact.deleteLoderFlag" [ngClass]="{'disabled-content': genericLoaderFlag}"
                   class="ml-3 text-dange pointer icon-size" (click)="deleteContactSwal(contact.id, i)"

@@ -17,6 +17,8 @@ export class InMemoryDataBaseService implements InMemoryDbService {
         phoneNumber: '478-993-7545',
         status: 1,
         gender: 1,
+        deleteLoderFlag: false,
+        switchLoaderFlag: false,
       },
       {
         id: 2,
@@ -27,6 +29,8 @@ export class InMemoryDataBaseService implements InMemoryDbService {
         phoneNumber: '435-712-8045',
         status: 1,
         gender: 2,
+        deleteLoderFlag: false,
+        switchLoaderFlag: false,
       },
       {
         id: 3,
@@ -37,6 +41,8 @@ export class InMemoryDataBaseService implements InMemoryDbService {
         phoneNumber: '803-566-5473',
         status: 1,
         gender: 1,
+        deleteLoderFlag: false,
+        switchLoaderFlag: false,
       },
       {
         id: 4,
@@ -47,6 +53,8 @@ export class InMemoryDataBaseService implements InMemoryDbService {
         phoneNumber: '949-651-3960',
         status: 2,
         gender: 2,
+        deleteLoderFlag: false,
+        switchLoaderFlag: false,
       },
       {
         id: 5,
@@ -57,6 +65,8 @@ export class InMemoryDataBaseService implements InMemoryDbService {
         phoneNumber: '701-996-2775',
         status: 1,
         gender: 2,
+        deleteLoderFlag: false,
+        switchLoaderFlag: false,
       },
     ];
     return { contacts };

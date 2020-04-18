@@ -39,6 +39,15 @@ export class ContactListingService {
     );
   }
 
+  /** PUT: update the contact on the server */
+  updateContact(contact: ContactDiary): Observable<any> {
+    return this.http.put(this.contactsUrl, contact, this.httpOptions).pipe(
+      // tslint:disable-next-line:no-console
+      tap(_ => console.log(`updated contact id=${contact.id}`)),
+      catchError(this.handleError<any>('updateContact')),
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

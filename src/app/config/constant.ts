@@ -1,3 +1,4 @@
+import { NbComponentStatus } from '@nebular/theme';
 
 export const CONTACT_STATUS = [
   {
@@ -14,3 +15,11 @@ export enum ContactStatusEnum {
   Active = 1,
   Inactive = 2,
 }
+
+export const toasterTypes: NbComponentStatus[] = [
+  'primary',
+  'success',
+  'info',
+  'warning',
+  'danger',
+];

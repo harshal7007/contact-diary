@@ -3,6 +3,7 @@ import { ContactListingComponent } from './contact-listing.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '../../../shared/shared.module';
 import { ContactListingService } from './contact-listing.service';
+import { UiSwitchModule } from 'ngx-ui-switch';
 
 const routes: Routes = [
   {
@@ -18,6 +19,12 @@ const routes: Routes = [
   imports: [
     SharedModule,
     RouterModule.forChild(routes),
+    UiSwitchModule.forRoot({
+      size: 'small',
+      color: '#28a745',
+      switchColor: '#ffffff',
+      defaultBgColor: '#dc3545',
+    }),
   ],
   exports: [
     RouterModule,

@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbCardModule, NbButtonModule, NbIconModule, NbTooltipModule } from '@nebular/theme';
+import { NbCardModule, NbButtonModule, NbIconModule, NbTooltipModule, NbSpinnerModule } from '@nebular/theme';
+import { LoaderComponent } from './component/loader/loader.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [LoaderComponent],
   imports: [
     CommonModule,
     NbCardModule,
     NbButtonModule,
     NbIconModule,
     NbTooltipModule,
+    NbSpinnerModule,
   ],
   exports: [
     CommonModule,
@@ -18,6 +20,8 @@ import { NbCardModule, NbButtonModule, NbIconModule, NbTooltipModule } from '@ne
     NbButtonModule,
     NbIconModule,
     NbTooltipModule,
+    NbSpinnerModule,
+    LoaderComponent,
   ],
 })
 export class SharedModule { }

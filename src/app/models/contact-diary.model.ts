@@ -7,4 +7,6 @@ export class ContactDiary {
     phoneNumber: string;
     status: number;
     gender: number;
+    deleteLoderFlag: boolean;
+    switchLoaderFlag: boolean;
 }

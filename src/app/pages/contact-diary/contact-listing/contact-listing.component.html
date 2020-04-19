@@ -45,7 +45,7 @@
                 <nb-icon class="ml-3 text-success pointer icon-size" (click)="goToManageContact(contact.id)" [ngClass]="{'disabled-content': genericLoaderFlag}"
                   nbTooltip="edit" nbTooltipPlacement="top" nbTooltipStatus="success" icon="edit" pack="fa"></nb-icon>
                 <nb-icon *ngIf="!contact.deleteLoderFlag" [ngClass]="{'disabled-content': genericLoaderFlag}"
-                  class="ml-3 text-dange pointer icon-size" (click)="deleteContactSwal(contact.id, i)"
+                  class="ml-3 text-danger pointer icon-size" (click)="deleteContactSwal(contact.id, i)"
                   nbTooltip="delete" nbTooltipPlacement="top" nbTooltipStatus="danger" icon="trash" pack="fa"></nb-icon>
                 <div class="fa fa-spinner fa-spin ml-3 text-info icon-size" *ngIf="contact.deleteLoderFlag"></div>
                 <span class="ml-3 float-left">
